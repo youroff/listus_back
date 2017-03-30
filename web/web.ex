@@ -26,6 +26,7 @@ defmodule Listus.Web do
     quote do
       use Phoenix.Controller
 
+      alias JSONApi.Response
       import Listus.Router.Helpers
       import Listus.Gettext
     end

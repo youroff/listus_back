@@ -17,4 +17,5 @@
   "poison": {:hex, :poison, "2.2.0", "4763b69a8a77bd77d26f477d196428b741261a761257ff1cf92753a0d4d24a63", [:mix], []},
   "poolboy": {:hex, :poolboy, "1.5.1", "6b46163901cfd0a1b43d692657ed9d7e599853b3b21b95ae5ae0a777cf9b6ca8", [:rebar], []},
   "ranch": {:hex, :ranch, "1.3.2", "e4965a144dc9fbe70e5c077c65e73c57165416a901bd02ea899cfd95aa890986", [:rebar3], []},
-  "retry": {:hex, :retry, "0.6.0", "6a71c4094f20040f4810c4bfd288d5433f9b69d0f4d99b9648af8010a124617c", [:mix], []}}
+  "retry": {:hex, :retry, "0.6.0", "6a71c4094f20040f4810c4bfd288d5433f9b69d0f4d99b9648af8010a124617c", [:mix], []},
+  "uuid": {:hex, :uuid, "1.1.7", "007afd58273bc0bc7f849c3bdc763e2f8124e83b957e515368c498b641f7ab69", [:mix], []}}

@@ -5,6 +5,10 @@ defmodule Listus.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug :accepts, ["json"]
+  end
+
   # scope "/", Listus do
   #   pipe_through :browser # Use the default browser stack
   #
@@ -15,5 +19,10 @@ defmodule Listus.Router do
   scope "/api", Listus do
     pipe_through :api
     resources "/users", UserController, except: [:new, :edit]
+  end
+
+  scope "/auth", Listus do
+    pipe_through :auth
+    resources "/", UserController, only: [:create]
   end
 end

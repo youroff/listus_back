@@ -1,18 +1,12 @@
 defmodule Listus.UserTest do
-  use Listus.ModelCase
-
+  use ExUnit.Case, async: false
   alias Listus.User
+  import MonEx.Result
 
-  @valid_attrs %{}
-  @invalid_attrs %{}
-
-  test "changeset with valid attributes" do
-    changeset = User.changeset(%User{}, @valid_attrs)
-    assert changeset.valid?
-  end
-
-  test "changeset with invalid attributes" do
-    changeset = User.changeset(%User{}, @invalid_attrs)
-    refute changeset.valid?
+  test "create / find_by_uuid" do
+    ok(user) = User.create()
+    assert ok(found) = User.find_by_uuid(user.uuid)
+    assert found.id == user.id
+    assert error(:empty) = User.find_by_uuid("WTFLOL")
   end
 end

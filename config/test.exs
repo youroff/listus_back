@@ -8,3 +8,6 @@ config :listus, Listus.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :bolt_sips, Bolt,
+  url: "localhost:7687"

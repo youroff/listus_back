@@ -19,7 +19,7 @@ defmodule Listus.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-
+      import MonEx.{Result, Option}
       import Listus.Router.Helpers
 
       # The default endpoint for testing
@@ -27,7 +27,7 @@ defmodule Listus.ConnCase do
     end
   end
 
-  setup tags do
+  setup _tags do
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end

@@ -17,7 +17,7 @@ defmodule Listus.Mixfile do
   # Type `mix help compile.app` for more information.
   def application, do: [
     mod: {Listus, []},
-    applications: [:phoenix, :cowboy, :logger, :gettext]
+    applications: [:phoenix, :bolt_sips, :cowboy, :logger, :gettext]
   ]
 
   # Specifies which paths to compile per environment.
@@ -33,6 +33,7 @@ defmodule Listus.Mixfile do
     {:monex, "~> 0.1.1"},
     {:phoenix_live_reload, "~> 1.0", only: :dev},
     {:gettext, "~> 0.11"},
-    {:cowboy, "~> 1.0"}
+    {:cowboy, "~> 1.0"},
+    {:uuid, "~> 1.1"}
   ]
 end

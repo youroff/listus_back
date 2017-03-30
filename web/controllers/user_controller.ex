@@ -4,6 +4,7 @@ defmodule Listus.UserController do
   alias Listus.User
 
   def create(conn, _params) do
-    
+    User.create()
+    |> Response.apply_and_render(conn)
   end
 end
