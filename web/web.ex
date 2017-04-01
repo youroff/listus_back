@@ -18,7 +18,9 @@ defmodule Listus.Web do
 
   def model do
     quote do
-      # Define common model functionality
+      import Ecto.Changeset
+      import MonEx.{Result, Option}
+      import Neo4j
     end
   end
 

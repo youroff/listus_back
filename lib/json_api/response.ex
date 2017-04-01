@@ -59,6 +59,10 @@ defmodule JSONApi.Response do
 
   # Adjust formats
   defp transform_errors(error) do
-    # Data.Util.transform_errors(changeset)
+    Ecto.Changeset.traverse_errors(error, fn {msg, opts} ->
+      Enum.reduce(opts, msg, fn {key, value}, acc ->
+        String.replace(acc, "%{#{key}}", to_string(value))
+      end)
+    end)
   end
 end

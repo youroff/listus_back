@@ -8,9 +8,8 @@ defmodule Listus.UserControllerTest do
 
   test "creates user", %{conn: conn} do
     conn = post conn, user_path(conn, :create)
-    assert %{"id" => id, "labels" => labels, "uuid" => uuid} = json_response(conn, 201)#["data"]["id"]
-    assert ok(user) = User.find_by_uuid(uuid)
-    assert labels == ["User"]
+    assert %{"id" => id, "uuid" => uuid} = json_response(conn, 201)
+    assert some(user) = User.find_by_uuid(uuid)
     assert user.id == id
   end
 end

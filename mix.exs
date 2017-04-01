@@ -29,6 +29,7 @@ defmodule Listus.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps, do: [
     {:phoenix, "~> 1.2.1"},
+    {:ecto, "~> 2.1"},
     {:bolt_sips, "~> 0.2"},
     {:monex, "~> 0.1.1"},
     {:phoenix_live_reload, "~> 1.0", only: :dev},

@@ -3,6 +3,7 @@ defmodule Listus.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug Listus.Plugs.AuthByUUID
   end
 
   pipeline :auth do
@@ -18,7 +19,7 @@ defmodule Listus.Router do
   # Other scopes may use custom stacks.
   scope "/api", Listus do
     pipe_through :api
-    resources "/users", UserController, except: [:new, :edit]
+    resources "/lists", ListController 
   end
 
   scope "/auth", Listus do

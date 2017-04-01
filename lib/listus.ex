@@ -10,6 +10,7 @@ defmodule Listus do
     children = [
       # Start the endpoint when the application starts
       supervisor(Listus.Endpoint, []),
+      supervisor(Listus.WordApi, []),
       # Start your own worker by calling: Listus.Worker.start_link(arg1, arg2, arg3)
       # worker(Listus.Worker, [arg1, arg2, arg3]),
     ]
