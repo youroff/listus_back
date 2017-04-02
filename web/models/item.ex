@@ -51,7 +51,7 @@ defmodule Listus.Item do
   end
 
   def update(item, params) do
-    changeset = changeset(item, Map.drop(params, [:name]))
+    changeset = changeset(item, Map.drop(params, [:name, "name"])) # Meh... atoms are not strings, yeah
     if changeset.valid? do
       """
         MATCH (:List)-[r:CONTAINS]->(:Item)
