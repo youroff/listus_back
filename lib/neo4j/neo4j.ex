@@ -35,6 +35,11 @@ defmodule Neo4j do
   defp populate(%Bolt.Sips.Types.Node{id: id, labels: labels, properties: props}, model) do
     struct(model, Map.merge(atomize(props), %{id: id, labels: labels}))
   end
+
+  defp populate(%Bolt.Sips.Types.Relationship{id: id, properties: props}, model) do
+    struct(model, Map.merge(atomize(props), %{id: id}))
+  end
+
   defp populate(_, _), do: nil
 
   defp atomize(hash) do

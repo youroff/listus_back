@@ -13,4 +13,6 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 
 ```
 CREATE CONSTRAINT ON (u:User) ASSERT u.uuid IS UNIQUE;
+CREATE CONSTRAINT ON (i:Item) ASSERT i.iname IS UNIQUE;
+CREATE CONSTRAINT ON (t:Tag) ASSERT t.name IS UNIQUE;
 ```

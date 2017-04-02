@@ -19,7 +19,9 @@ defmodule Listus.Router do
   # Other scopes may use custom stacks.
   scope "/api", Listus do
     pipe_through :api
-    resources "/lists", ListController 
+    resources "/lists", ListController do
+      resources "/items", ItemController 
+    end
   end
 
   scope "/auth", Listus do
