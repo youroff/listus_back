@@ -24,7 +24,9 @@ defmodule Listus.ItemControllerTest do
 
   test "creates item", %{conn: conn, user: user, list: list} do
     conn = post conn, list_item_path(conn, :create, list), uuid: user.uuid, item: [name: "LOL"]
-    assert %{"name" => "LOL", "id" => _} = json_response(conn, 201)
+    assert %{"name" => "LOL", "id" => id} = json_response(conn, 201)
+    assert some(item) = Item.find(list, id)
+    assert item.name == "LOL"
   end
 
   test "update item", %{conn: conn, user: user, list: list, item: item} do

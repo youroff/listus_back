@@ -15,7 +15,7 @@ defmodule Listus.List do
     changeset = changeset(%List{}, params)
     if changeset.valid? do
       """
-        MATCH (u) WHERE ID(u) = {uid}
+        MATCH (u:User) WHERE ID(u) = {uid}
         CREATE (u)-[:OWNS]->(l:List {params})
         RETURN l
       """
@@ -28,7 +28,7 @@ defmodule Listus.List do
 
   def all(user) do
     """
-      MATCH (u)-[r:OWNS]->(l:List) WHERE ID(u) = {uid}
+      MATCH (u:User)-[r:OWNS]->(l:List) WHERE ID(u) = {uid}
       RETURN l ORDER BY l.name ASC
     """
     |> query(%{uid: user.id})
@@ -37,7 +37,7 @@ defmodule Listus.List do
 
   def find(user, list_id) do
     """
-      MATCH (u)-[r:OWNS]->(l:List)
+      MATCH (u:User)-[r:OWNS]->(l:List)
       WHERE ID(u) = {uid} AND ID(l) = {lid}
       RETURN l
     """

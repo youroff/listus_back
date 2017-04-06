@@ -24,7 +24,7 @@ defmodule Listus.ItemController do
 
   def create(conn, params) do
     list(conn, params)
-    |> MonEx.flat_map(& List.create(&1, params["item"]))
+    |> MonEx.flat_map(& Item.create(&1, params["item"]))
     |> Response.apply_and_render(conn)
   end
 

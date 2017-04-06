@@ -16,14 +16,14 @@ defmodule Listus.Item do
     changeset = changeset(%Item{}, params)
     if changeset.valid? do
       """
-        MATCH (l) WHERE ID(l) = {lid}
+        MATCH (l:List) WHERE ID(l) = {lid}
         MERGE (i:Item {iname: toLower({name})})
           ON CREATE SET i.name = {name}
         MERGE (l)-[r:CONTAINS]->(i)
         ON CREATE SET r += {params}
         RETURN r
       """
-      |> query(%{params: changeset.changes, lid: list.id, name: params[:name]})
+      |> query(%{params: changeset.changes, lid: list.id, name: changeset.changes.name})
       |> decode_ok(r: __MODULE__)
     else
       error(changeset)
@@ -32,7 +32,7 @@ defmodule Listus.Item do
 
   def all(list) do
     """
-      MATCH (l)-[r:CONTAINS]->(:Item)
+      MATCH (l:List)-[r:CONTAINS]->(:Item)
       WHERE ID(l) = {lid}
       RETURN r ORDER BY r.pos ASC
     """
@@ -42,7 +42,7 @@ defmodule Listus.Item do
 
   def find(list, item_id) do
     """
-      MATCH (l)-[r:CONTAINS]->(:Item)
+      MATCH (l:List)-[r:CONTAINS]->(:Item)
       WHERE ID(l) = {lid} AND ID(r) = {iid}
       RETURN r
     """
